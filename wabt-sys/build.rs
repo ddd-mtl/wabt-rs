@@ -20,6 +20,8 @@ fn main() {
     out_build_dir.push("build");
 
     println!("cargo:rustc-link-search=native={}", out_build_dir.display());
+    #[cfg(windows)]
+    println!("cargo:rustc-link-search=native={}\\Debug", out_build_dir.display());    
     println!("cargo:rustc-link-lib=static=wabt");
     
     // We need to link against C++ std lib
